@@ -1,15 +1,12 @@
-import Link from "next/link";
-import React from "react";
+import { auth0 } from "@/lib/auth0";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth0.getSession();
+  console.log(session);
+
   return (
-    <ul>
-      <li>
-        <Link href="/signin">Sign in</Link>
-      </li>
-      <li>
-        <Link href="/signup">Sign up</Link>
-      </li>
-    </ul>
+    <div className="flex items-center justify-center h-screen ">
+      {session ? <h1 className="text-6xl">{session.user.name}</h1> : null}
+    </div>
   );
 }

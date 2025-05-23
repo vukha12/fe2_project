@@ -1,6 +1,8 @@
-export interface IUser extends Document {
-  firstName: string;
-  lastName: string;
+export interface IUser {
+  sub: string;
+  name: string;
   email: string;
-  password: string;
+  email_verified: boolean;
+  pictute: string;
+  role: string;
 }
