@@ -1,19 +1,24 @@
-"use client";
-
 import Link from "next/link";
-import React from "react";
 import { ROUTES } from "@/constants/routes";
 import { IoMdHome, IoMdNotifications } from "react-icons/io";
 import { IoBagRemoveSharp } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
-import HandleSignIn from "@/components/HandleSignIn";
-import { auth0 } from "@/lib/auth0";
+import { getAuthenticatedUser } from "@/lib/auth";
+import Logout from "@/components/Logout";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-export default async function NavbarSignin() {
-  const session = await auth0.getSession();
+export default async function NavbarDesktop() {
+  const user = await getAuthenticatedUser();
+
   return (
     <div className=" hidden md:flex items-center space-x-4">
-      {session ? (
+      {user ? (
         <div className="flex space-x-4">
           <div className="w-[70px] flex justify-center">
             <Link
@@ -44,8 +49,21 @@ export default async function NavbarSignin() {
               <span className="text-xs font-medium">Notification</span>
             </Link>
           </div>
-
-          <HandleSignIn />
+          <div className="w-[70px] flex">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="default" className="text-xs font-medium">
+                  {user.nickname}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-40">
+                <DropdownMenuItem>
+                  <Logout />
+                  <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
       ) : (
         <div className="flex gap-4">
@@ -54,14 +72,14 @@ export default async function NavbarSignin() {
             variant="default"
             asChild
           >
-            <Link href="/auth/login">sign in</Link>
+            <Link href="/signin">sign in</Link>
           </Button>
           <Button
             className="text-xl border-0 hover:shadow-xs"
             variant="outline"
             asChild
           >
-            <Link href="/auth/login?screen_hint=signup">sign up</Link>
+            <Link href="/signup">sign up</Link>
           </Button>
         </div>
       )}

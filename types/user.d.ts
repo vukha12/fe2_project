@@ -1,8 +1,9 @@
 export interface IUser {
-  sub: string;
-  name: string;
+  firstname: string;
+  lastname: string;
+  nickname?: string;
   email: string;
-  email_verified: boolean;
-  pictute: string;
+  password: string;
+  image?: string;
   role: string;
 }

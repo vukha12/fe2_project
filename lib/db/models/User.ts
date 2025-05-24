@@ -5,11 +5,12 @@ export interface IUserDocument extends IUser, Document {}
 
 const UserSchema: Schema = new Schema<IUserDocument>(
   {
-    sub: { type: String, required: true, unique: true },
+    firstname: { type: String, required: true },
+    lastname: { type: String, required: true },
+    nickname: String,
     email: { type: String, required: true, unique: true },
-    name: String,
-    email_verified: Boolean,
-    pictute: String,
+    password: { type: String, requiredPaths: true },
+    image: String,
     role: { type: String, enum: ["user", "employer"], default: "user" },
   },
   { timestamps: true }

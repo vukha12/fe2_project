@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/layouts/Navbar";
-import { Auth0Provider } from "@auth0/nextjs-auth0";
 
 export const metadata: Metadata = {
   title: "Job Every",
@@ -16,15 +15,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        <Auth0Provider>
-          <div className="min-h-screen w-full">
-            <Navbar />
-
-            <main className="">
-              <div className="">{children}</div>
-            </main>
-          </div>
-        </Auth0Provider>
+        <div className="min-h-screen w-full">
+          <Navbar />
+          <main className="">
+            <div className="">{children}</div>
+          </main>
+        </div>
       </body>
     </html>
   );
