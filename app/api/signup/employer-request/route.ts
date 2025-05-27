@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     }
 
     const newEmployer = await Employer.create({
-      userId: new Types.ObjectId(user._id),
+      userId: user._id,
       company_name,
       company_website,
       province,

@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -11,5 +10,9 @@ export default function Logout() {
     router.push("/");
     router.refresh();
   };
-  return <button onClick={handleLogout}>Logout</button>;
+  return (
+    <button onClick={handleLogout} className="cursor-pointer">
+      Logout
+    </button>
+  );
 }

@@ -1,14 +1,13 @@
-export type JobType = "full-time" | "part-time";
-
 export interface IJob {
   employer_id: Types.ObjectId;
-  title: string;
+  job_title: string;
+  company: string;
+  province: number;
+  district: number;
+  job_type: number;
+  skill: number;
+  experience: number;
+  salary: string;
   description: string;
-  requirements: string;
-  location: string;
-  jobType: JobType;
-  experienceRequired: number;
-  status: "active" | "inactive";
-  salaryMin: number;
-  salaryMax: number;
+  interest: string;
 }

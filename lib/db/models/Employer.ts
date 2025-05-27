@@ -1,4 +1,4 @@
-import mongoose, { Model, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { IEmployer } from "@/types/employer";
 
 export interface IEmployerDocument extends IEmployer, Document {}

@@ -34,7 +34,7 @@ export default async function NavbarDesktop() {
 
           <div className="w-[70px] flex justify-center">
             <Link
-              href={ROUTES.homePage}
+              href={ROUTES.job}
               className="flex flex-col items-center active:border-b-2 focus:border-b-2 min-w-full text-gray-500 hover:text-black"
             >
               <IoBagRemoveSharp size={22} />
@@ -68,9 +68,15 @@ export default async function NavbarDesktop() {
                   {user.nickname}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-40 bg-white">
+              <DropdownMenuContent className="w-48 bg-white">
                 <DropdownMenuItem>
-                  <Link href="/signup/employer" className="text-wrap">
+                  <Link href="/post" className="text-wrap">
+                    Đăng bài tuyển dụng
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className="bg-gray-400" />
+                <DropdownMenuItem>
+                  <Link href="/signup/employer" className="text-wrap truncate">
                     Đăng ký nhà tuyển dụng
                   </Link>
                 </DropdownMenuItem>
