@@ -5,10 +5,12 @@ import { IoBagRemoveSharp } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import { getAuthenticatedUser } from "@/lib/auth";
 import Logout from "@/components/Logout";
+import Image from "next/image";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -52,11 +54,27 @@ export default async function NavbarDesktop() {
           <div className="w-[70px] flex">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="default" className="text-xs font-medium">
+                <Button
+                  variant="ghost"
+                  className="text-xs font-medium flex flex-col"
+                >
+                  <Image
+                    src={user.image || "/avatar-default.jpg"}
+                    alt="User Avatar"
+                    width={22}
+                    height={22}
+                    className="rounded-full mr-2"
+                  />
                   {user.nickname}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-40">
+              <DropdownMenuContent className="w-40 bg-white">
+                <DropdownMenuItem>
+                  <Link href="/signup/employer" className="text-wrap">
+                    Đăng ký nhà tuyển dụng
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className="bg-gray-400" />
                 <DropdownMenuItem>
                   <Logout />
                   <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

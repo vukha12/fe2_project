@@ -1,4 +1,8 @@
+"use client";
+
+import { useEffect } from "react";
 import FormSignUp from "./form";
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
   return (

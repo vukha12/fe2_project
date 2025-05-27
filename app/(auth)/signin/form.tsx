@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
+import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -52,10 +52,11 @@ export default function FormSignUp() {
         throw new Error(data.message || "Signup failed");
       }
 
-      alert(data.message);
+      toast.success(data.message || "Đăng nhập thành công!");
       router.push("/");
       router.refresh();
     } catch (error: any) {
+      toast.error(error.message || "Đăng nhập thất bại!");
       setError(error.message);
     } finally {
       setLoading(false);

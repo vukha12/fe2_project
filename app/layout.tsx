@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import Navbar from "@/components/layouts/Navbar";
 
 export const metadata: Metadata = {
@@ -15,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
+        <ToastContainer position="top-right" autoClose={1000} />
         <div className="min-h-screen w-full">
           <Navbar />
           <main className="">

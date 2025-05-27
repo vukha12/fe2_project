@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     const isMatch = await bcrypt.compare(password, user.password || "");
     if (!isMatch) {
       return NextResponse.json(
-        { message: "Tài khoàn hoặc mật khẩu không đúng" },
+        { message: "Tài khoản hoặc mật khẩu không đúng" },
         { status: 401 }
       );
     }

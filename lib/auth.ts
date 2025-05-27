@@ -27,6 +27,7 @@ export async function getAuthenticatedUser() {
     return JSON.parse(JSON.stringify(user));
   } catch (error) {
     console.error("Error authenticating user:", error);
+
     // Có thể là token hết hạn hoặc không hợp lệ, xóa token để người dùng đăng nhập lại
     (await cookies()).delete("token");
     return null;

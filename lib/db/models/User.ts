@@ -10,7 +10,7 @@ const UserSchema: Schema = new Schema<IUserDocument>(
     nickname: String,
     email: { type: String, required: true, unique: true },
     password: { type: String, requiredPaths: true },
-    image: String,
+    image: { type: String, default: "/avatar-default.jpg" },
     role: { type: String, enum: ["user", "employer"], default: "user" },
   },
   { timestamps: true }

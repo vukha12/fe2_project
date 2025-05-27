@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
+import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -48,21 +48,8 @@ export default function FormSignUp() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || "Signup failed");
-      }
-
-      alert(data.message);
-      router.push("signin");
     } catch (error: any) {
+      toast.error(error.message || "Đăng ký thất bại!");
       setError(error.message);
     } finally {
       setLoading(false);
